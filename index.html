@@ -3,169 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElisaGroop | خدمات التأشيرة</title>
+    <title>ElisaGroop | خدمات الفيزا</title>
     <style>
         :root {
-            /* لون أزرق مائي شفاف يشبه لون البحر */
-            --bg-aqua: rgba(0, 157, 255, 0.1); 
             --sea-blue: #0077b6;
+            --light-aqua: #caf0f8;
             --gold-accent: #ffcc00;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-dark: #023e8a;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0;
-            /* خلفية متدرجة تعطي إحساس أمواج البحر */
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background: linear-gradient(to bottom, #e0f2fe, #bae6fd);
+            color: #023e8a;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* شريط تبديل اللغة */
+        /* أزرار اللغة */
         .top-bar {
-            background: rgba(0, 119, 182, 0.1);
-            padding: 10px 20px;
+            padding: 15px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             gap: 10px;
+            background: rgba(255, 255, 255, 0.3);
         }
         .lang-btn {
-            background: white;
-            border: 2px solid var(--sea-blue);
-            color: var(--sea-blue);
-            padding: 5px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
+            background: white; border: 2px solid var(--sea-blue);
+            padding: 5px 15px; border-radius: 20px; cursor: pointer;
+            font-weight: bold; color: var(--sea-blue);
         }
-        .lang-btn:hover { background: var(--sea-blue); color: white; }
 
         header {
-            text-align: center;
-            padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.4);
-            border-bottom: 4px solid var(--sea-blue);
-            backdrop-filter: blur(10px);
+            text-align: center; padding: 40px 20px;
+            background: white; border-bottom: 5px solid var(--sea-blue);
         }
-        header h1 { color: var(--sea-blue); margin: 0; font-size: 3.5rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
-        header p { font-weight: bold; color: #0077b6; }
+        header h1 { font-size: 3rem; margin: 0; color: var(--sea-blue); }
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
-        .section-title { text-align: center; color: var(--sea-blue); margin-bottom: 40px; font-size: 2.2rem; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; }
 
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
 
+        /* تصميم كرت الدولة */
         .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 119, 182, 0.1);
-            border-bottom: 5px solid var(--sea-blue);
+            background: white; padding: 20px; border-radius: 15px;
+            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--gold-accent);
             transition: 0.3s;
         }
-        .card:hover { transform: translateY(-10px); }
+        .card:hover { transform: translateY(-5px); }
 
         .flag-wrapper {
-            width: 85px; height: 85px; margin: 0 auto 15px;
-            border-radius: 50%; overflow: hidden;
-            border: 3px solid #caf0f8;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 70px; height: 70px; margin: 0 auto 15px;
+            border-radius: 50%; overflow: hidden; border: 2px solid #ddd;
         }
         .flag { width: 100%; height: 100%; object-fit: cover; }
 
-        .requirements { text-align: start; padding: 0; list-style: none; margin-top: 15px; }
-        .requirements li { margin-bottom: 8px; font-size: 0.95rem; color: #333; display: flex; align-items: center; gap: 8px; }
+        .requirements { text-align: right; padding: 0; list-style: none; font-size: 0.9rem; }
+        .requirements li { margin-bottom: 5px; border-bottom: 1px solid #f0f0f0; }
 
-        /* أيقونة واتساب عائمة */
+        /* الطائرة */
+        .flying-plane {
+            position: fixed; top: 20%; left: -100px; font-size: 2.5rem;
+            z-index: 2000; animation: fly 15s linear infinite;
+        }
+        @keyframes fly {
+            from { left: -100px; }
+            to { left: 110%; }
+        }
+
+        /* واتساب */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: #25d366; color: white;
-            width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            z-index: 1000; transition: 0.3s;
+            background: #25d366; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000;
         }
 
-        .flying-plane {
-            position: fixed; top: 25%; left: -100px; font-size: 3rem;
-            z-index: 2000; animation: infiniteFly 18s linear infinite;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
-        }
-        @keyframes infiniteFly {
-            0% { left: -100px; transform: rotate(5deg); }
-            100% { left: 110%; transform: rotate(-5deg); }
-        }
-
-        footer { text-align: center; padding: 40px; background: var(--sea-blue); color: white; margin-top: 60px; }
+        footer { text-align: center; padding: 30px; background: var(--sea-blue); color: white; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <div class="top-bar">
-    <button class="lang-btn" onclick="updateContent('ar')">العربية</button>
-    <button class="lang-btn" onclick="updateContent('en')">English</button>
+    <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
 </div>
 
 <div class="flying-plane">✈️</div>
 
 <header>
-    <h1>ElisaGroop</h1>
-    <p id="heroText">أسرع خدمات الفيزا والسياحة الدولية</p>
+    <h1 id="mainTitle">ElisaGroop</h1>
+    <p id="subTitle">أسرع خدمات الفيزا والسياحة الدولية</p>
 </header>
 
 <div class="container">
     <h2 class="section-title" id="secTitle">متطلبات التأشيرة حسب الدولة</h2>
-    <div class="services" id="grid"></div>
+    <div class="services" id="servicesGrid">
+        </div>
 </div>
 
 <a href="https://wa.me/4915561912961" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
 </a>
 
-<footer id="footerText">© 2026 ElisaGroop - رحلتك الممتعة تبدأ معنا</footer>
+<footer id="footerText">© 2026 ElisaGroop - رحلتك تبدأ معنا</footer>
 
 <script>
-    const translations = {
+    const content = {
         ar: {
-            hero: "أسرع خدمات الفيزا والسياحة الدولية",
-            secTitle: "متطلبات التأشيرة حسب الدولة",
-            footer: "© 2026 ElisaGroop - رحلتك الممتعة تبدأ معنا",
+            sub: "أسرع خدمات الفيزا والسياحة الدولية",
+            sec: "متطلبات التأشيرة حسب الدولة",
+            foot: "© 2026 ElisaGroop - رحلتك تبدأ معنا",
             dir: "rtl",
             countries: [
-                { name: "تركيا", flag: "tr", reqs: ["جواز سفر (6 أشهر)", "صورة شخصية بيضاء", "تأشيرة إلكترونية سريعة"] },
-                { name: "فرنسا", flag: "fr", reqs: ["كشف حساب بنكي", "تأمين طبي شنغن", "إثبات عمل/سجل"] },
-                { name: "بريطانيا", flag: "gb", reqs: ["كشف حساب قوي", "ترجمة المستندات", "إثبات دخل"] },
-                { name: "ألبانيا", flag: "al", reqs: ["جواز سفر", "حجز طيران وفندق", "تأمين طبي"] },
-                { name: "الجبل الأسود", flag: "me", reqs: ["جواز سفر ساري", "إثبات إقامة", "كشف حساب"] },
-                { name: "أرمينيا", flag: "am", reqs: ["صورة الجواز", "صورة شخصية", "تأشيرة إلكترونية"] },
-                { name: "إستونيا", flag: "ee", reqs: ["تأشيرة شنغن", "كشف حساب", "تأمين طبي"] },
-                { name: "اليونان", flag: "gr", reqs: ["كشف حساب (3 أشهر)", "حجز فندق", "تأمين سفر"] },
-                { name: "جورجيا", flag: "ge", reqs: ["جواز سفر", "تأمين دولي", "إقامة سارية للبعض"] },
-                { name: "هولندا", flag: "nl", reqs: ["متطلبات شنغن", "كشف حساب بنكي", "إثبات عمل"] }
+                {n: "تركيا", f: "tr", r: ["جواز سفر ساري", "صورة شخصية", "تأشيرة إلكترونية"]},
+                {n: "فرنسا", f: "fr", r: ["كشف حساب بنكي", "تأمين طبي", "إثبات عمل"]},
+                {n: "بريطانيا", f: "gb", r: ["كشف حساب قوي", "ترجمة مستندات", "إثبات دخل"]},
+                {n: "ألبانيا", f: "al", r: ["جواز سفر", "حجز طيران", "تأمين طبي"]},
+                {n: "الجبل الأسود", f: "me", r: ["جواز سفر", "إثبات إقامة", "كشف حساب"]},
+                {n: "أرمينيا", f: "am", r: ["صورة الجواز", "صورة شخصية", "تأشيرة"]},
+                {n: "إستونيا", f: "ee", r: ["شنغن فيزا", "كشف حساب", "تأمين طبي"]},
+                {n: "اليونان", f: "gr", r: ["كشف حساب", "حجز فندق", "تأمين سفر"]},
+                {n: "جورجيا", f: "ge", r: ["جواز سفر", "تأمين دولي", "إقامة سارية"]},
+                {n: "هولندا", f: "nl", r: ["متطلبات شنغن", "كشف حساب", "إثبات عمل"]}
             ]
         },
         en: {
-            hero: "Fastest International Visa & Travel Services",
-            secTitle: "Visa Requirements by Country",
-            footer: "© 2026 ElisaGroop - Your Pleasant Journey Starts With Us",
+            sub: "Fastest International Visa Services",
+            sec: "Visa Requirements by Country",
+            foot: "© 2026 ElisaGroop - Your Journey Starts Here",
             dir: "ltr",
             countries: [
-                { name: "Turkey", flag: "tr", reqs: ["Passport (6 months)", "White backgr. photo", "Fast E-Visa"] },
-                { name: "France", flag: "fr", reqs: ["Bank Statement", "Schengen Insurance", "Job/Business Proof"] },
-                { name: "United Kingdom", flag: "gb", reqs: ["Strong Bank Statement", "Legal Translation", "Income Proof"] },
-                { name: "Albania", flag: "al", reqs: ["Passport", "Flight & Hotel booking", "Travel Insurance"] },
-                { name: "Montenegro", flag: "me", reqs: ["Valid Passport", "Proof of Residency", "Bank Statement"] },
-                { name: "Armenia", flag: "am", reqs: ["Passport Copy", "Personal Photo", "E-Visa"] },
-                { name: "Estonia", flag: "ee", reqs: ["Schengen Visa", "Bank Statement", "Medical Insurance"] },
-                { name: "Greece", flag: "gr", reqs: ["Bank Stat. (3 mo)", "Hotel Booking", "Travel Insurance"] },
+                {n: "Turkey", f: "tr", r: ["Valid Passport", "Photo", "E-Visa"]},
+                {n: "France", f: "fr", r: ["Bank Statement", "Insurance", "Job Proof"]},
+                {n: "UK", f: "gb", r: ["Bank Statement", "Translations", "Income Proof"]},
+                {n: "Albania", f: "al", r: ["Passport", "Flight Booking", "Insurance"]},
+                {n: "Montenegro", f: "me", r: ["Passport", "Residency Proof", "Bank Stat."]},
+                {n: "Armenia", f: "am", r: ["Passport Copy", "Photo", "Visa"]},
+                {n: "Estonia", f: "ee", r: ["Schengen Visa", "Bank Stat.", "Insurance"]},
+                {n: "Greece", f: "gr", r: ["Bank Statement", "Hotel", "Insurance"]},
+                {n: "Georgia", f: "ge", r: ["Passport", "Insurance", "Residency"]},
+                {n: "Netherlands", f: "nl", r: ["Schengen Req.", "Bank Stat.", "Job Proof"]}
+            ]
+        }
+    };
+
+    function setLang(l) {
+        const d = content[l];
+        document.getElementById('mainHtml').dir = d.dir;
+        document.getElementById('subTitle').innerText = d.sub;
+        document.getElementById('secTitle').innerText = d.sec;
+        document.getElementById('footerText').innerText = d.foot;
+        
+        const grid = document.getElementById('servicesGrid');
+        grid.innerHTML = '';
+        d.countries.forEach(c => {
+            grid.innerHTML += `
+                <div class="card">
+                    <div class="flag-wrapper"><img src="https://flagcdn.com/w160/${c.f}.png" class="flag"></div>
+                    <h3>${c.n}</h3>
+                    <ul class="requirements" style="text-align: ${l === 'ar' ? 'right' : 'left'}">
+                        ${c.r.map(item => `<li>✅ ${item}</li>`).join('')}
+                    </ul>
+                </div>`;
+        });
+    }
+    setLang('ar'); // تشغيل عند البداية
+</script>
+</body>
+</html>
