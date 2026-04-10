@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنجاز | خدمات التأشيرة الإلكترونية</title>
+    <title>ElisaGroop | خدمات التأشيرة الإلكترونية</title>
     <style>
         :root {
-            --primary-orange: #ff6600;
-            --gold-color: #b38f00;
-            --text-dark: #2a2a2a;
+            --primary-orange: #ff6600; /* برتقالي زاهي */
+            --gold-color: #b38f00; /* ذهبي ملكي */
+            --text-dark: #2a2a2a; /* لون النص الأساسي */
         }
         
-        /* خلفية الطائرة والسماء */
+        /* الخلفية الزاهية: طائرة في السماء */
         html {
             background-image: url('https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=1920&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
+            background-color: #87CEEB;
         }
         
         body {
@@ -27,17 +28,24 @@
             background-color: rgba(255, 255, 255, 0.4); 
             color: var(--text-dark);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         header {
             background-color: rgba(255, 255, 255, 0.95);
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             border-bottom: 4px solid var(--gold-color);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        header h1 { color: var(--gold-color); margin: 0; font-size: 2.3rem; }
+        header h1 { 
+            color: var(--gold-color); 
+            margin: 0; 
+            font-size: 3rem; /* اسم المكتب الجديد */
+            font-family: 'Arial Black', sans-serif;
+            letter-spacing: 2px;
+        }
 
         .hero {
             padding: 60px 20px;
@@ -46,58 +54,84 @@
 
         .hero h2 { 
             color: var(--primary-orange); 
-            font-size: 2.2rem; 
-            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 2.5rem; 
+            background-color: rgba(255, 255, 255, 0.85);
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 25px;
             border-radius: 15px;
-            border: 1px solid var(--gold-color);
+            border: 2px solid var(--gold-color);
+            margin-bottom: 10px;
+        }
+        
+        .hero p {
+            background-color: rgba(255, 255, 255, 0.7);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .btn-whatsapp {
             background: linear-gradient(45deg, #25d366, #128c7e);
             color: white;
-            padding: 18px 40px;
+            padding: 18px 45px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             display: inline-block;
-            margin-top: 25px;
-            font-size: 1.3rem;
+            margin-top: 30px;
+            font-size: 1.4rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             border: 2px solid var(--gold-color);
+            transition: 0.3s ease-in-out;
+        }
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
         }
 
         .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
 
-        /* معرض الصور السياحية */
+        /* معرض الصور السياحية (أنهار، أشجار، بحار) */
         .tourist-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 50px;
+            gap: 20px;
+            margin: 40px 0;
         }
         
         .gallery-item {
-            height: 200px;
-            border-radius: 15px;
+            height: 220px;
+            border-radius: 20px;
             background-size: cover;
             background-position: center;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 4px solid #fff;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
             position: relative;
             overflow: hidden;
+            transition: 0.3s;
         }
+        .gallery-item:hover { transform: scale(1.03); }
 
         .gallery-item span {
             position: absolute;
             bottom: 0;
             width: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             color: #fff;
             text-align: center;
-            padding: 5px 0;
-            font-size: 0.9rem;
+            padding: 8px 0;
+            font-weight: bold;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold-color);
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .services {
@@ -108,48 +142,51 @@
 
         .card {
             background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
-            border-top: 5px solid var(--primary-orange);
+            border-top: 6px solid var(--primary-orange);
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); border-top-color: var(--gold-color); }
 
-        .card h3 { color: var(--gold-color); margin: 0; font-size: 1.2rem; }
-        .flag { width: 40px; border-radius: 3px; margin-bottom: 10px; }
+        .card h3 { color: var(--text-dark); margin: 0; font-size: 1.3rem; }
+        .flag { width: 50px; border-radius: 5px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
         .footer { 
             text-align: center; 
-            padding: 40px; 
-            background: rgba(255, 255, 255, 0.95); 
-            border-top: 3px solid var(--gold-color);
+            padding: 50px 20px; 
+            background: rgba(255, 255, 255, 0.98); 
+            border-top: 4px solid var(--gold-color);
             color: var(--gold-color);
-            margin-top: 50px;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>مكتب إنجاز لخدمات الفيزا</h1>
+    <h1>ElisaGroop</h1>
 </header>
 
 <section class="hero">
-    <h2>اكتشف جمال العالم معنا</h2>
-    <p><b>نحن نعتني بتأشيرتك.. وأنت استمتع برحلتك</b></p>
-    <a href="https://wa.me/4917635315100" class="btn-whatsapp">استفسر الآن عبر واتساب</a>
+    <h2>تأشيرتك الإلكترونية في دقائق</h2>
+    <p><b>ElisaGroop نعتني بتأشيرتك.. وأنت استمتع برحلتك</b></p>
+    <br>
+    <a href="https://wa.me/4917635315100" class="btn-whatsapp">تواصل معنا عبر واتساب</a>
 </section>
 
 <div class="container">
-    <h3 style="text-align: center; color: var(--primary-orange); font-size: 1.8rem;">وجهات ساحرة بانتظارك</h3>
+    <h3 class="section-title">وجهات سياحية ساحرة</h3>
     <div class="tourist-gallery">
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=60');"><span>بحار وشواطئ</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=60');"><span>غابات وطبيعة خضراء</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=500&q=60');"><span>أنهار وجبال</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&w=500&q=60');"><span>معالم سياحية</span></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80');"><span>أنهار وجبال</span></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80');"><span>غابات طبيعية</span></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');"><span>شواطئ كريستالية</span></div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80');"><span>قمم جبلية</span></div>
     </div>
 
-    <h3 style="text-align: center; color: var(--primary-orange); font-size: 1.8rem; margin-top: 40px;">الدول المتاحة</h3>
+    <h3 class="section-title">الدول المتاحة للخدمة</h3>
     <div class="services">
         <div class="card"><img src="https://flagcdn.com/w80/tr.png" class="flag"><h3>تركيا</h3></div>
         <div class="card"><img src="https://flagcdn.com/w80/al.png" class="flag"><h3>ألبانيا</h3></div>
@@ -166,8 +203,8 @@
 </div>
 
 <div class="footer">
-    <p>© 2026 مكتب إنجاز لخدمات الفيزا</p>
-    <p style="font-size: 0.9rem; color: var(--primary-orange);">وجهتك الأولى نحو العالم</p>
+    <p>© 2026 ElisaGroop - لخدمات التأشيرة والسفر</p>
+    <p style="font-size: 0.9rem; color: var(--primary-orange);">نفتح لك أبواب العالم</p>
 </div>
 
 </body>
