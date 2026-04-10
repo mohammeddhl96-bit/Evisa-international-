@@ -9,99 +9,114 @@
             --sea-blue: #0077b6;
             --evisa-orange: #ff6600;
             --gold-accent: #ffcc00;
+            --whatsapp-green: #25d366;
         }
 
         body {
             margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #e0f2fe;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
             overflow-x: hidden;
+            color: #023e8a;
         }
 
-        /* الهيدر المشترك في المنتصف */
         header {
             text-align: center;
             padding: 30px;
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             border-bottom: 5px solid var(--sea-blue);
-            position: relative;
-            z-index: 10;
+            backdrop-filter: blur(10px);
         }
-        header h1 { font-size: 3rem; margin: 0; color: var(--sea-blue); }
-        header .sub-brand { font-size: 1.8rem; color: var(--evisa-orange); font-weight: bold; }
+        header h1 { font-size: 3.5rem; margin: 0; color: var(--sea-blue); }
+        header .sub-brand { font-size: 2rem; color: var(--evisa-orange); font-weight: bold; }
 
-        /* الحاوية الرئيسية المقسمة */
         .dual-container {
             display: flex;
             width: 100%;
-            min-height: 100vh;
+            min-height: 80vh;
         }
 
-        /* تنسيق كل شق */
         .side {
             width: 50%;
-            padding: 40px 20px;
+            padding: 40px 25px;
             box-sizing: border-box;
         }
 
-        .side-ar { 
-            direction: rtl; 
-            border-left: 2px dashed var(--sea-blue); 
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .side-en { 
-            direction: ltr; 
-            background: rgba(0, 119, 182, 0.05);
-        }
+        .side-ar { direction: rtl; border-left: 1px solid rgba(0, 119, 182, 0.2); }
+        .side-en { direction: ltr; }
 
-        h2.title { text-align: center; color: var(--sea-blue); margin-bottom: 30px; }
+        h2.title { text-align: center; color: var(--sea-blue); margin-bottom: 30px; font-size: 1.8rem; }
 
-        .services {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .services { display: flex; flex-direction: column; gap: 15px; }
 
         .card {
             background: white;
             padding: 15px;
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-right: 5px solid var(--gold-accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
-        .side-en .card { border-right: none; border-left: 5px solid var(--gold-accent); }
+        .card:hover { transform: scale(1.02); }
 
-        .flag-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .flag-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; }
 
-        .info h3 { margin: 0 0 5px 0; color: var(--sea-blue); font-size: 1.1rem; }
-        .info p { margin: 0; font-size: 0.85rem; color: #555; }
+        .info h3 { margin: 0; color: var(--sea-blue); font-size: 1.1rem; }
+        .info p { margin: 2px 0 0 0; font-size: 0.9rem; color: #444; }
 
-        /* الطائرة العابرة للحدود */
+        /* الطائرة */
         .plane {
-            position: fixed; top: 50%; left: -100px;
+            position: fixed; top: 40%; left: -100px;
             font-size: 2.5rem; z-index: 1000;
-            animation: flyAcross 12s linear infinite;
+            animation: flyAcross 15s linear infinite;
         }
         @keyframes flyAcross {
             from { left: -100px; }
             to { left: 110%; }
         }
 
-        .whatsapp {
-            position: fixed; bottom: 20px; right: 20px;
-            background: #25d366; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        /* الفوتر الجديد مع الرقم الواضح */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #ffffff;
+            border-top: 3px solid var(--sea-blue);
+            margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
+        .contact-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #f0f9ff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 2px solid var(--whatsapp-green);
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .contact-box:hover { background: var(--whatsapp-green); color: white; }
+        .contact-box img { width: 35px; }
+
+        /* أيقونة واتساب العائمة */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; left: 30px;
+            background: var(--whatsapp-green);
+            width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;
+        }
+
+        @media (max-width: 850px) {
             .dual-container { flex-direction: column; }
             .side { width: 100%; }
-            .side-ar { border-left: none; border-bottom: 2px dashed var(--sea-blue); }
+            .side-ar { border-left: none; border-top: 1px solid #ddd; }
+            .contact-box { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -117,25 +132,4 @@
 <div class="dual-container">
     
     <div class="side side-en">
-        <h2 class="title">Visa Requirements</h2>
-        <div class="services">
-            <div class="card"><img src="https://flagcdn.com/w160/tr.png" class="flag-img"><div class="info"><h3>Turkey</h3><p>Passport, Photo, Fast E-Visa</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/fr.png" class="flag-img"><div class="info"><h3>France</h3><p>Bank Statement, Insurance, Job Proof</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/gb.png" class="flag-img"><div class="info"><h3>United Kingdom</h3><p>Strong Bank Statement, Translation</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/al.png" class="flag-img"><div class="info"><h3>Albania</h3><p>Passport, Hotel & Flight booking</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/me.png" class="flag-img"><div class="info"><h3>Montenegro</h3><p>Valid Passport, Proof of Stay</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/am.png" class="flag-img"><div class="info"><h3>Armenia</h3><p>Passport Copy, Photo, E-Visa</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/ee.png" class="flag-img"><div class="info"><h3>Estonia</h3><p>Schengen Visa, Bank Statement</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/gr.png" class="flag-img"><div class="info"><h3>Greece</h3><p>Insurance, Hotel, Bank Statement</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/ge.png" class="flag-img"><div class="info"><h3>Georgia</h3><p>Passport, Travel Insurance</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/nl.png" class="flag-img"><div class="info"><h3>Netherlands</h3><p>Schengen Req, Bank Statement</p></div></div>
-        </div>
-    </div>
-
-    <div class="side side-ar">
-        <h2 class="title">متطلبات التأشيرة</h2>
-        <div class="services">
-            <div class="card"><img src="https://flagcdn.com/w160/tr.png" class="flag-img"><div class="info"><h3>تركيا</h3><p>جواز سفر، صورة، تأشيرة إلكترونية</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/fr.png" class="flag-img"><div class="info"><h3>فرنسا</h3><p>كشف حساب، تأمين طبي، إثبات عمل</p></div></div>
-            <div class="card"><img src="https://flagcdn.com/w160/gb.png" class="flag-img"><div class="info"><h3>بريطانيا</h3><p>كشف حساب قوي، ترجمة معتمدة</p></div></div>
-            <div class="card"><img src="
+        <h2 class="
