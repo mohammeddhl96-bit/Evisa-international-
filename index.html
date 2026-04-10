@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElisaGroop | خدمات الفيزا</title>
+    <title>ElisaGroop | أي فيزا</title>
     <style>
         :root {
             --sea-blue: #0077b6;
@@ -14,78 +14,87 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0;
-            background: linear-gradient(to bottom, #e0f2fe, #bae6fd);
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
             color: #023e8a;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* أزرار اللغة */
         .top-bar {
             padding: 15px;
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-end;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
         }
+
         .lang-btn {
             background: white; border: 2px solid var(--sea-blue);
             padding: 5px 15px; border-radius: 20px; cursor: pointer;
-            font-weight: bold; color: var(--sea-blue);
+            font-weight: bold; color: var(--sea-blue); transition: 0.3s;
         }
+        .lang-btn:hover { background: var(--sea-blue); color: white; }
 
         header {
-            text-align: center; padding: 40px 20px;
-            background: white; border-bottom: 5px solid var(--sea-blue);
+            text-align: center; padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-bottom: 5px solid var(--sea-blue);
+            backdrop-filter: blur(5px);
         }
-        header h1 { font-size: 3rem; margin: 0; color: var(--sea-blue); }
+        header h1 { font-size: 3.5rem; margin: 0; color: var(--sea-blue); line-height: 1; }
+        /* تنسيق "أي فيزا" */
+        .sub-brand { 
+            font-size: 1.8rem; 
+            color: #e65c00; 
+            margin-top: 10px; 
+            font-weight: bold;
+            display: block;
+        }
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--sea-blue); }
 
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
-        /* تصميم كرت الدولة */
         .card {
-            background: white; padding: 20px; border-radius: 15px;
-            text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white; padding: 25px; border-radius: 20px;
+            text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.08);
             border-top: 5px solid var(--gold-accent);
             transition: 0.3s;
         }
-        .card:hover { transform: translateY(-5px); }
+        .card:hover { transform: translateY(-10px); }
 
         .flag-wrapper {
-            width: 70px; height: 70px; margin: 0 auto 15px;
-            border-radius: 50%; overflow: hidden; border: 2px solid #ddd;
+            width: 80px; height: 80px; margin: 0 auto 15px;
+            border-radius: 50%; overflow: hidden; border: 3px solid var(--light-aqua);
         }
         .flag { width: 100%; height: 100%; object-fit: cover; }
 
-        .requirements { text-align: right; padding: 0; list-style: none; font-size: 0.9rem; }
-        .requirements li { margin-bottom: 5px; border-bottom: 1px solid #f0f0f0; }
+        .requirements { padding: 0; list-style: none; font-size: 1rem; margin-top: 15px; }
+        .requirements li { margin-bottom: 8px; border-bottom: 1px solid #f0f0f0; padding-bottom: 4px; }
 
-        /* الطائرة */
         .flying-plane {
-            position: fixed; top: 20%; left: -100px; font-size: 2.5rem;
-            z-index: 2000; animation: fly 15s linear infinite;
+            position: fixed; top: 15%; left: -100px; font-size: 3rem;
+            z-index: 2000; animation: fly 16s linear infinite;
+            pointer-events: none;
         }
         @keyframes fly {
-            from { left: -100px; }
-            to { left: 110%; }
+            from { left: -100px; transform: rotate(5deg); }
+            to { left: 110%; transform: rotate(-5deg); }
         }
 
-        /* واتساب */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; width: 60px; height: 60px;
+            background: #25d366; width: 65px; height: 65px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); z-index: 1000;
         }
 
-        footer { text-align: center; padding: 30px; background: var(--sea-blue); color: white; margin-top: 50px; }
+        footer { text-align: center; padding: 40px; background: var(--sea-blue); color: white; margin-top: 60px; }
     </style>
 </head>
 <body>
@@ -98,8 +107,9 @@
 <div class="flying-plane">✈️</div>
 
 <header>
-    <h1 id="mainTitle">ElisaGroop</h1>
-    <p id="subTitle">أسرع خدمات الفيزا والسياحة الدولية</p>
+    <h1>ElisaGroop</h1>
+    <span class="sub-brand" id="brandSub">أي فيزا</span>
+    <p id="heroText" style="margin-top:15px; font-weight:bold;">أسرع خدمات الفيزا والسياحة الدولية</p>
 </header>
 
 <div class="container">
@@ -109,47 +119,49 @@
 </div>
 
 <a href="https://wa.me/4915561912961" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40">
 </a>
 
-<footer id="footerText">© 2026 ElisaGroop - رحلتك تبدأ معنا</footer>
+<footer id="footerText">© 2026 ElisaGroop - أي فيزا | رحلتك تبدأ معنا</footer>
 
 <script>
     const content = {
         ar: {
-            sub: "أسرع خدمات الفيزا والسياحة الدولية",
+            brandSub: "أي فيزا",
+            hero: "أسرع خدمات الفيزا والسياحة الدولية",
             sec: "متطلبات التأشيرة حسب الدولة",
-            foot: "© 2026 ElisaGroop - رحلتك تبدأ معنا",
+            foot: "© 2026 ElisaGroop - أي فيزا | رحلتك تبدأ معنا",
             dir: "rtl",
             countries: [
-                {n: "تركيا", f: "tr", r: ["جواز سفر ساري", "صورة شخصية", "تأشيرة إلكترونية"]},
-                {n: "فرنسا", f: "fr", r: ["كشف حساب بنكي", "تأمين طبي", "إثبات عمل"]},
-                {n: "بريطانيا", f: "gb", r: ["كشف حساب قوي", "ترجمة مستندات", "إثبات دخل"]},
-                {n: "ألبانيا", f: "al", r: ["جواز سفر", "حجز طيران", "تأمين طبي"]},
-                {n: "الجبل الأسود", f: "me", r: ["جواز سفر", "إثبات إقامة", "كشف حساب"]},
-                {n: "أرمينيا", f: "am", r: ["صورة الجواز", "صورة شخصية", "تأشيرة"]},
-                {n: "إستونيا", f: "ee", r: ["شنغن فيزا", "كشف حساب", "تأمين طبي"]},
-                {n: "اليونان", f: "gr", r: ["كشف حساب", "حجز فندق", "تأمين سفر"]},
-                {n: "جورجيا", f: "ge", r: ["جواز سفر", "تأمين دولي", "إقامة سارية"]},
-                {n: "هولندا", f: "nl", r: ["متطلبات شنغن", "كشف حساب", "إثبات عمل"]}
+                {n: "تركيا", f: "tr", r: ["جواز سفر ساري", "صورة شخصية", "تأشيرة إلكترونية فورية"]},
+                {n: "فرنسا", f: "fr", r: ["كشف حساب بنكي", "تأمين طبي شنغن", "إثبات عمل"]},
+                {n: "بريطانيا", f: "gb", r: ["كشف حساب قوي", "ترجمة المستندات", "إثبات دخل"]},
+                {n: "ألبانيا", f: "al", r: ["جواز سفر", "حجز طيران وفندق", "تأمين طبي"]},
+                {n: "الجبل الأسود", f: "me", r: ["جواز سفر ساري", "إثبات إقامة", "كشف حساب"]},
+                {n: "أرمينيا", f: "am", r: ["صورة الجواز", "صورة شخصية", "تأشيرة إلكترونية"]},
+                {n: "إستونيا", f: "ee", r: ["تأشيرة شنغن", "كشف حساب", "تأمين طبي"]},
+                {n: "اليونان", f: "gr", r: ["كشف حساب (3 أشهر)", "حجز فندق", "تأمين سفر"]},
+                {n: "جورجيا", f: "ge", r: ["جواز سفر", "تأمين دولي", "إقامة سارية للبعض"]},
+                {n: "هولندا", f: "nl", r: ["متطلبات شنغن", "كشف حساب بنكي", "إثبات عمل"]}
             ]
         },
         en: {
-            sub: "Fastest International Visa Services",
+            brandSub: "Evisa",
+            hero: "Fastest International Visa Services",
             sec: "Visa Requirements by Country",
-            foot: "© 2026 ElisaGroop - Your Journey Starts Here",
+            foot: "© 2026 ElisaGroop - Evisa | Your Journey Starts With Us",
             dir: "ltr",
             countries: [
-                {n: "Turkey", f: "tr", r: ["Valid Passport", "Photo", "E-Visa"]},
-                {n: "France", f: "fr", r: ["Bank Statement", "Insurance", "Job Proof"]},
-                {n: "UK", f: "gb", r: ["Bank Statement", "Translations", "Income Proof"]},
-                {n: "Albania", f: "al", r: ["Passport", "Flight Booking", "Insurance"]},
-                {n: "Montenegro", f: "me", r: ["Passport", "Residency Proof", "Bank Stat."]},
-                {n: "Armenia", f: "am", r: ["Passport Copy", "Photo", "Visa"]},
-                {n: "Estonia", f: "ee", r: ["Schengen Visa", "Bank Stat.", "Insurance"]},
-                {n: "Greece", f: "gr", r: ["Bank Statement", "Hotel", "Insurance"]},
-                {n: "Georgia", f: "ge", r: ["Passport", "Insurance", "Residency"]},
-                {n: "Netherlands", f: "nl", r: ["Schengen Req.", "Bank Stat.", "Job Proof"]}
+                {n: "Turkey", f: "tr", r: ["Valid Passport", "Personal Photo", "Instant E-Visa"]},
+                {n: "France", f: "fr", r: ["Bank Statement", "Medical Insurance", "Proof of Work"]},
+                {n: "United Kingdom", f: "gb", r: ["Strong Bank Statement", "Translations", "Income Proof"]},
+                {n: "Albania", f: "al", r: ["Valid Passport", "Flight/Hotel booking", "Travel Insurance"]},
+                {n: "Montenegro", f: "me", r: ["Valid Passport", "Proof of Residence", "Bank Statement"]},
+                {n: "Armenia", f: "am", r: ["Passport Copy", "Personal Photo", "E-Visa"]},
+                {n: "Estonia", f: "ee", r: ["Schengen Visa", "Bank Statement", "Medical Insurance"]},
+                {n: "Greece", f: "gr", r: ["Bank Stat. (3 mo)", "Hotel Booking", "Travel Insurance"]},
+                {n: "Georgia", f: "ge", r: ["Passport", "Intl Insurance", "Residency for some"]},
+                {n: "Netherlands", f: "nl", r: ["Schengen Req.", "Bank Statement", "Proof of Work"]}
             ]
         }
     };
@@ -157,7 +169,8 @@
     function setLang(l) {
         const d = content[l];
         document.getElementById('mainHtml').dir = d.dir;
-        document.getElementById('subTitle').innerText = d.sub;
+        document.getElementById('brandSub').innerText = d.brandSub;
+        document.getElementById('heroText').innerText = d.hero;
         document.getElementById('secTitle').innerText = d.sec;
         document.getElementById('footerText').innerText = d.foot;
         
@@ -174,7 +187,8 @@
                 </div>`;
         });
     }
-    setLang('ar'); // تشغيل عند البداية
+    // البدء بالعربية تلقائياً
+    setLang('ar');
 </script>
 </body>
 </html>
