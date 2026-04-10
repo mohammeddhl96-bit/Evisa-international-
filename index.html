@@ -1,156 +1,180 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="mainHtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElisaGroop | خدمات التأشيرة الإلكترونية</title>
     <style>
         :root {
-            --primary-orange: #ff6600;
-            --gold-color: #b38f00;
-            --text-dark: #2a2a2a;
-        }
-        
-        html {
-            background-image: url('https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=1920&auto=format&fit=crop'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            --bg-orange: #ff6600;
+            --gold-accent: #ffcc00;
+            --text-white: #ffffff;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: rgba(255, 255, 255, 0.4); 
-            color: var(--text-dark);
+            margin: 0; padding: 0;
+            background-color: var(--bg-orange);
+            color: var(--text-white);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: all 0.3s ease;
         }
         
+        /* شريط تبديل اللغة */
+        .lang-switcher {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .lang-btn {
+            background: var(--gold-accent);
+            color: #000;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
         header {
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: rgba(0, 0, 0, 0.2);
             padding: 20px;
             text-align: center;
-            border-bottom: 4px solid var(--gold-color);
-            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 3px solid var(--gold-accent);
         }
         
-        header h1 { color: var(--gold-color); margin: 0; font-size: 2.5rem; font-family: 'Arial Black'; }
+        header h1 { color: var(--gold-accent); margin: 0; font-size: 2.5rem; }
 
-        .hero { padding: 60px 20px; text-align: center; }
-        .hero h2 { 
-            color: var(--primary-orange); 
-            background: rgba(255,255,255,0.9);
-            padding: 10px 25px;
-            border-radius: 15px;
-            border: 2px solid var(--gold-color);
-        }
-
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
-
-        .section-title { text-align: center; color: var(--gold-color); font-size: 2rem; margin: 40px 0 20px; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
 
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.15);
             padding: 20px;
             border-radius: 20px;
             text-align: center;
-            border-top: 5px solid var(--primary-orange);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
         }
-        .card:hover { transform: translateY(-5px); }
 
         .flag-wrapper {
-            width: 80px; height: 80px; margin: 0 auto 10px;
-            border-radius: 50%; border: 3px solid var(--gold-color);
-            overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
+            width: 80px; height: 80px; margin: 0 auto 15px;
+            border-radius: 50%; border: 3px solid var(--gold-accent);
+            overflow: hidden; background: white;
         }
         .flag { width: 100%; height: 100%; object-fit: cover; }
 
+        .requirements { text-align: inherit; list-style: none; padding: 0; font-size: 0.9rem; }
+        
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            text-align: center;
-            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            position: fixed; bottom: 30px; left: 30px;
+            background-color: #25d366; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
             z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
         }
 
-        footer { text-align: center; padding: 30px; background: white; border-top: 3px solid var(--gold-color); margin-top: 50px; }
-
-        /* --- حركة الطائرة المستمرة --- */
         .flying-plane {
-            position: fixed;
-            top: 20%;
-            left: -100px;
-            font-size: 2.5rem;
-            z-index: 2000;
-            animation: infiniteFly 10s linear infinite; /* حركة لا نهائية */
-            pointer-events: none; /* لكي لا تعيق النقر على الروابط */
+            position: fixed; top: 15%; left: -100px; font-size: 2.5rem;
+            z-index: 2000; animation: infiniteFly 15s linear infinite;
         }
 
         @keyframes infiniteFly {
-            0% { left: -100px; top: 20%; transform: rotate(10deg); }
-            50% { top: 40%; transform: rotate(0deg); }
-            100% { left: 110%; top: 20%; transform: rotate(-10deg); }
+            0% { left: -100px; }
+            100% { left: 110%; }
         }
+
+        footer { text-align: center; padding: 30px; margin-top: 40px; border-top: 1px solid var(--gold-accent); }
     </style>
 </head>
 <body>
 
+<div class="lang-switcher">
+    <button class="lang-btn" onclick="changeLang('ar')">العربية</button>
+    <button class="lang-btn" onclick="changeLang('en')">English</button>
+</div>
+
 <div class="flying-plane">✈️</div>
 
 <header>
-    <h1>ElisaGroop</h1>
+    <h1 id="title">ElisaGroop</h1>
 </header>
 
-<section class="hero">
-    <h2>خدمات الفيزا الإلكترونية بكل ثقة</h2>
-    <p><b>أسرع طريق لوجهتك القادمة يبدأ من هنا</b></p>
-</section>
-
 <div class="container">
-    
-    <h3 class="section-title">وجهاتنا المتاحة</h3>
-    <div class="services">
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/tr.png" class="flag"></div><h3>تركيا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/al.png" class="flag"></div><h3>ألبانيا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/me.png" class="flag"></div><h3>الجبل الأسود</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/am.png" class="flag"></div><h3>أرمينيا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/ee.png" class="flag"></div><h3>استونيا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/gr.png" class="flag"></div><h3>اليونان</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/ge.png" class="flag"></div><h3>جورجيا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/fr.png" class="flag"></div><h3>فرنسا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/nl.png" class="flag"></div><h3>هولندا</h3></div>
-        <div class="card"><div class="flag-wrapper"><img src="https://flagcdn.com/w160/gb.png" class="flag"></div><h3>بريطانيا</h3></div>
-    </div>
-
+    <h2 id="secTitle" style="text-align:center; color:var(--gold-accent);">الأوراق المطلوبة حسب الدولة</h2>
+    <div class="services" id="servicesGrid">
+        </div>
 </div>
 
-<a href="https://wa.me/4917635315100" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40">
+<a href="https://wa.me/4917635315100" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
 </a>
 
-<footer>
-    <p>© 2026 ElisaGroop - نفتح لك أبواب العالم</p>
+<footer id="footerText">
+    © 2026 ElisaGroop - نفتح لك أبواب العالم
 </footer>
+
+<script>
+    const data = {
+        ar: {
+            secTitle: "الأوراق المطلوبة حسب الدولة",
+            footer: "© 2026 ElisaGroop - نفتح لك أبواب العالم",
+            countries: [
+                { name: "تركيا", flag: "tr", reqs: ["جواز سفر ساري", "صورة شخصية", "تأشيرة إلكترونية خلال ساعات"] },
+                { name: "فرنسا", flag: "fr", reqs: ["كشف حساب بنكي", "تأمين طبي", "إثبات عمل"] },
+                { name: "بريطانيا", flag: "gb", reqs: ["كشف حساب قوي", "ترجمة المستندات", "إثبات دخل"] },
+                { name: "اليونان", flag: "gr", reqs: ["تأمين سفر", "حجز فندق", "كشف حساب"] },
+                { name: "جورجيا", flag: "ge", reqs: ["جواز سفر", "تأمين سفر", "إقامة سارية للبعض"] }
+            ]
+        },
+        en: {
+            secTitle: "Required Documents by Country",
+            footer: "© 2026 ElisaGroop - Opening World Doors for You",
+            countries: [
+                { name: "Turkey", flag: "tr", reqs: ["Valid Passport", "Personal Photo", "E-Visa in hours"] },
+                { name: "France", flag: "fr", reqs: ["Bank Statement", "Travel Insurance", "Employment Proof"] },
+                { name: "UK", flag: "gb", reqs: ["Strong Bank Statement", "Legal Translation", "Income Proof"] },
+                { name: "Greece", flag: "gr", reqs: ["Travel Insurance", "Hotel Booking", "Bank Statement"] },
+                { name: "Georgia", flag: "ge", reqs: ["Passport", "Travel Insurance", "Residency for some"] }
+            ]
+        }
+    };
+
+    function changeLang(lang) {
+        const html = document.getElementById('mainHtml');
+        html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        html.lang = lang;
+        
+        document.getElementById('secTitle').innerText = data[lang].secTitle;
+        document.getElementById('footerText').innerText = data[lang].footer;
+        
+        const grid = document.getElementById('servicesGrid');
+        grid.innerHTML = '';
+        
+        data[lang].countries.forEach(c => {
+            const card = `
+                <div class="card">
+                    <div class="flag-wrapper"><img src="https://flagcdn.com/w160/${c.flag}.png" class="flag"></div>
+                    <h3>${c.name}</h3>
+                    <ul class="requirements">
+                        ${c.reqs.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+    }
+
+    // تشغيل اللغة العربية تلقائياً عند الفتح
+    changeLang('ar');
+</script>
 
 </body>
 </html>
