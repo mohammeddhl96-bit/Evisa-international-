@@ -2,62 +2,85 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElisaGroop | Evisa Dual</title>
+    <title>ElisaGroop | Evisa</title>
     <style>
-        :root {
-            --sea-blue: #0077b6;
-            --evisa-orange: #ff6600;
-            --gold-accent: #ffcc00;
-            --whatsapp-green: #25d366;
-            --light-aqua: #e0f2fe;
-        }
-
         body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--light-aqua) 0%, #bae6fd 100%);
-            overflow-x: hidden;
+            margin: 0; font-family: sans-serif;
+            background-color: #e0f2fe; /* لون أزرق مائي */
             color: #023e8a;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
-
         header {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-bottom: 5px solid var(--sea-blue);
-            backdrop-filter: blur(10px);
+            text-align: center; padding: 40px;
+            background: white; border-bottom: 5px solid #0077b6;
         }
-        header h1 { font-size: 3rem; margin: 0; color: var(--sea-blue); }
-        header .sub-brand { font-size: 2rem; color: var(--evisa-orange); font-weight: bold; }
+        header h1 { font-size: 3rem; margin: 0; color: #0077b6; }
+        .evisa { font-size: 2rem; color: #ff6600; font-weight: bold; }
 
-        .dual-container {
-            display: flex;
-            width: 100%;
-            flex-grow: 1;
+        .container {
+            display: flex; flex-wrap: wrap; width: 100%;
         }
-
         .side {
-            width: 50%;
-            padding: 40px 25px;
-            box-sizing: border-box;
+            flex: 1; min-width: 300px; padding: 20px; box-sizing: border-box;
         }
-
-        .side-ar { direction: rtl; border-left: 1px solid rgba(0, 119, 182, 0.2); }
-        .side-en { direction: ltr; }
-
-        h2.title { text-align: center; color: var(--sea-blue); margin-bottom: 30px; font-size: 1.8rem; }
-
-        .services { display: flex; flex-direction: column; gap: 15px; }
+        .side-ar { direction: rtl; border-left: 1px solid #ccc; }
+        .side-en { direction: ltr; background: rgba(255,255,255,0.2); }
 
         .card {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0
+            background: white; margin-bottom: 15px; padding: 15px;
+            border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex; align-items: center; gap: 15px;
+        }
+        .flag { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #ddd; }
+        
+        h3 { margin: 0; color: #0077b6; }
+        p { margin: 5px 0 0 0; font-size: 0.9rem; color: #444; }
+
+        footer {
+            text-align: center; padding: 40px; background: white;
+            border-top: 3px solid #0077b6; margin-top: 20px;
+        }
+        .whatsapp-btn {
+            display: inline-block; background: #25d366; color: white;
+            padding: 15px 25px; border-radius: 50px; text-decoration: none;
+            font-weight: bold; font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ElisaGroop</h1>
+    <div class="evisa">Evisa</div>
+    <p>أسرع خدمات الفيزا الدولية | International Visa Services</p>
+</header>
+
+<div class="container">
+    <div class="side side-en">
+        <h2 style="text-align:center">Visa Requirements</h2>
+        <div class="card"><img src="https://flagcdn.com/w80/tr.png" class="flag"><div><h3>Turkey</h3><p>Passport, Photo, E-Visa</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/fr.png" class="flag"><div><h3>France</h3><p>Bank Statement, Insurance</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/gb.png" class="flag"><div><h3>United Kingdom</h3><p>Income Proof, Translation</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/al.png" class="flag"><div><h3>Albania</h3><p>Flight & Hotel booking</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/ge.png" class="flag"><div><h3>Georgia</h3><p>Travel Insurance</p></div></div>
+    </div>
+
+    <div class="side side-ar">
+        <h2 style="text-align:center">متطلبات التأشيرة</h2>
+        <div class="card"><img src="https://flagcdn.com/w80/tr.png" class="flag"><div><h3>تركيا</h3><p>جواز سفر، صورة، تأشيرة إلكترونية</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/fr.png" class="flag"><div><h3>فرنسا</h3><p>كشف حساب، تأمين طبي</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/gb.png" class="flag"><div><h3>بريطانيا</h3><p>إثبات دخل، ترجمة مستندات</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/al.png" class="flag"><div><h3>ألبانيا</h3><p>حجز طيران وفندق</p></div></div>
+        <div class="card"><img src="https://flagcdn.com/w80/ge.png" class="flag"><div><h3>جورجيا</h3><p>تأمين سفر دولي</p></div></div>
+    </div>
+</div>
+
+<footer>
+    <p>تواصل معنا عبر الواتساب | Contact us</p>
+    <a href="https://wa.me/4915561912961" class="whatsapp-btn">
+        WhatsApp: 015561912961
+    </a>
+    <p style="margin-top:20px; font-size:0.8rem; color:#888;">© 2026 ElisaGroop - Evisa</p>
+</footer>
+
+</body>
+</html>
