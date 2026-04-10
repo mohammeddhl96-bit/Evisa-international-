@@ -6,108 +6,112 @@
     <title>ElisaGroop | خدمات التأشيرة الإلكترونية</title>
     <style>
         :root {
-            --primary-orange: #ff6600; /* برتقالي زاهي */
-            --gold-color: #b38f00; /* ذهبي ملكي */
-            --text-dark: #2a2a2a; /* لون النص الأساسي */
+            --primary-orange: #ff6600; /* برتقالي زاهي للسيف */
+            --gold-color: #b38f00; /* ذهبي ملكي للشعار */
+            --text-dark: #2a2a2a; /* أسود رمادي */
         }
         
-        /* الخلفية الزاهية: طائرة في السماء */
-        html {
-            background-image: url('https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=1920&auto=format&fit=crop'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-color: #87CEEB;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: rgba(255, 255, 255, 0.4); 
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
+        /* 1. تصميم الهيدر العلوي */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             padding: 30px;
             text-align: center;
             border-bottom: 4px solid var(--gold-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         header h1 { 
             color: var(--gold-color); 
             margin: 0; 
-            font-size: 3rem; /* اسم المكتب الجديد */
+            font-size: 3.5rem; /* شعار ElisaGroop */
             font-family: 'Arial Black', sans-serif;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
+        /* 2. تصميم الهيرو وخلفية الطائرة المثبتة */
         .hero {
-            padding: 60px 20px;
+            /* نفس صورة الطائرة في السماء */
+            background-image: url('https://images.unsplash.com/photo-1517400508447-f8dd518b86db?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* الخلفية مثبتة */
+            background-repeat: no-repeat;
+            padding: 80px 20px;
             text-align: center;
+            position: relative;
+        }
+        
+        /* طبقة حماية بيضاء شفافة فوق الهيرو */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h2 { 
             color: var(--primary-orange); 
-            font-size: 2.5rem; 
+            font-size: 2.8rem; 
             background-color: rgba(255, 255, 255, 0.85);
             display: inline-block;
-            padding: 10px 25px;
+            padding: 10px 30px;
             border-radius: 15px;
             border: 2px solid var(--gold-color);
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         
         .hero p {
             background-color: rgba(255, 255, 255, 0.7);
             display: inline-block;
-            padding: 5px 15px;
+            padding: 5px 20px;
             border-radius: 5px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: var(--text-dark);
         }
 
         .btn-whatsapp {
             background: linear-gradient(45deg, #25d366, #128c7e);
             color: white;
-            padding: 18px 45px;
+            padding: 20px 50px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             display: inline-block;
-            margin-top: 30px;
-            font-size: 1.4rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 2px solid var(--gold-color);
-            transition: 0.3s ease-in-out;
+            margin-top: 35px;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            border: 3px solid var(--gold-color);
+            transition: 0.3s;
         }
         .btn-whatsapp:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
         }
 
         .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
 
-        /* معرض الصور السياحية (أنهار، أشجار، بحار) */
+        /* 3. تصميم معرض صور الطبيعة الأربعة (نفس المربعات) */
         .tourist-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin: 40px 0;
+            margin: 50px 0;
         }
         
         .gallery-item {
-            height: 220px;
+            height: 250px; /* مربعات أكبر */
             border-radius: 20px;
             background-size: cover;
             background-position: center;
             border: 4px solid #fff;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             position: relative;
             overflow: hidden;
             transition: 0.3s;
@@ -121,46 +125,49 @@
             background: rgba(0,0,0,0.5);
             color: #fff;
             text-align: center;
-            padding: 8px 0;
+            padding: 10px 0;
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .section-title {
             text-align: center;
             color: var(--gold-color);
-            font-size: 2rem;
-            margin-top: 50px;
+            font-size: 2.3rem;
+            margin-top: 60px;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
+        /* 4. تصميم شبكة كروت الدول */
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            border-top: 6px solid var(--primary-orange);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 20px;
+            border-top: 8px solid var(--primary-orange); /* فريم علوي أسمك */
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
             transition: 0.3s;
         }
-        .card:hover { transform: translateY(-5px); border-top-color: var(--gold-color); }
+        .card:hover { transform: translateY(-8px); border-top-color: var(--gold-color); }
 
-        .card h3 { color: var(--text-dark); margin: 0; font-size: 1.3rem; }
-        .flag { width: 50px; border-radius: 5px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--text-dark); margin: 0; font-size: 1.4rem; }
+        .flag { width: 60px; border-radius: 6px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
+        /* 5. تصميم الفوتر */
         .footer { 
             text-align: center; 
-            padding: 50px 20px; 
+            padding: 60px 20px; 
             background: rgba(255, 255, 255, 0.98); 
-            border-top: 4px solid var(--gold-color);
+            border-top: 5px solid var(--gold-color);
             color: var(--gold-color);
-            margin-top: 60px;
+            margin-top: 80px;
         }
     </style>
 </head>
@@ -171,41 +178,16 @@
 </header>
 
 <section class="hero">
-    <h2>تأشيرتك الإلكترونية في دقائق</h2>
-    <p><b>ElisaGroop نعتني بتأشيرتك.. وأنت استمتع برحلتك</b></p>
-    <br>
-    <a href="https://wa.me/4917635315100" class="btn-whatsapp">تواصل معنا عبر واتساب</a>
+    <div class="hero-content">
+        <h2>تأشيرتك الإلكترونية في دقائق</h2>
+        <p><b>ElisaGroop نعتني بتأشيرتك.. وأنت استمتع برحلتك</b></p>
+        <br>
+        <a href="https://wa.me/4917635315100" class="btn-whatsapp">تواصل معنا عبر واتساب</a>
+    </div>
 </section>
 
 <div class="container">
     <h3 class="section-title">وجهات سياحية ساحرة</h3>
     <div class="tourist-gallery">
         <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80');"><span>أنهار وجبال</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80');"><span>غابات طبيعية</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');"><span>شواطئ كريستالية</span></div>
-        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80');"><span>قمم جبلية</span></div>
-    </div>
-
-    <h3 class="section-title">الدول المتاحة للخدمة</h3>
-    <div class="services">
-        <div class="card"><img src="https://flagcdn.com/w80/tr.png" class="flag"><h3>تركيا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/al.png" class="flag"><h3>ألبانيا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/me.png" class="flag"><h3>الجبل الأسود</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/am.png" class="flag"><h3>أرمينيا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/ee.png" class="flag"><h3>استونيا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/gr.png" class="flag"><h3>اليونان</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/ge.png" class="flag"><h3>جورجيا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/fr.png" class="flag"><h3>فرنسا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/eg.png" class="flag"><h3>مصر</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/nl.png" class="flag"><h3>هولندا</h3></div>
-        <div class="card"><img src="https://flagcdn.com/w80/gb.png" class="flag"><h3>بريطانيا</h3></div>
-    </div>
-</div>
-
-<div class="footer">
-    <p>© 2026 ElisaGroop - لخدمات التأشيرة والسفر</p>
-    <p style="font-size: 0.9rem; color: var(--primary-orange);">نفتح لك أبواب العالم</p>
-</div>
-
-</body>
-</html>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80');"><span>غابات طبيعية</span>
