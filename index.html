@@ -9,78 +9,172 @@
             --sea-blue: #0077b6;
             --evisa-orange: #ff6600;
             --whatsapp-green: #25d366;
+            --soft-aqua: #e0f2fe;
         }
+
         body {
-            margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e0f2fe; /* لون أزرق مائي */
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--soft-aqua) 0%, #bae6fd 100%);
             color: #023e8a;
+            overflow-x: hidden;
         }
+
+        /* الهيدر الرئيسي */
         header {
             text-align: center; padding: 40px 20px;
-            background: white; border-bottom: 5px solid var(--sea-blue);
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 5px solid var(--sea-blue);
+            backdrop-filter: blur(10px);
         }
-        header h1 { font-size: 3.5rem; margin: 0; color: var(--sea-blue); }
-        .evisa { font-size: 2.2rem; color: var(--evisa-orange); font-weight: bold; margin-top: 5px; }
+        header h1 { font-size: 3.5rem; margin: 0; color: var(--sea-blue); text-transform: uppercase; }
+        header .evisa-tag { font-size: 2.2rem; color: var(--evisa-orange); font-weight: bold; display: block; }
 
-        .container {
-            display: flex; flex-wrap: wrap; width: 100%; max-width: 1200px; margin: auto;
+        /* حاوية التقسيم (عربي - إنجليزي) */
+        .dual-layout {
+            display: flex; flex-wrap: wrap; width: 100%; min-height: 600px;
         }
+
         .side {
-            flex: 1; min-width: 320px; padding: 30px; box-sizing: border-box;
+            flex: 1; min-width: 350px; padding: 40px 20px; box-sizing: border-box;
         }
+
         .side-ar { direction: rtl; border-left: 1px solid rgba(0,0,0,0.1); }
-        .side-en { direction: ltr; background: rgba(255,255,255,0.2); }
+        .side-en { direction: ltr; background: rgba(255, 255, 255, 0.2); }
 
-        .card {
-            background: white; margin-bottom: 15px; padding: 18px;
-            border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex; align-items: center; gap: 15px;
-            transition: 0.3s;
+        h2.section-title { text-align: center; color: var(--sea-blue); margin-bottom: 30px; font-size: 2rem; border-bottom: 2px solid var(--evisa-orange); display: inline-block; width: 100%; padding-bottom: 10px; }
+
+        .visa-card {
+            background: white; margin-bottom: 20px; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex; align-items: center; gap: 20px;
+            transition: 0.3s ease; border-right: 5px solid var(--sea-blue);
         }
-        .card:hover { transform: translateY(-3px); }
-        .flag { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #eee; object-fit: cover; }
-        
-        h2 { text-align: center; color: var(--sea-blue); margin-bottom: 30px; font-size: 1.8rem; }
-        h3 { margin: 0; color: var(--sea-blue); font-size: 1.2rem; }
-        p.req-text { margin: 5px 0 0 0; font-size: 0.95rem; color: #444; }
+        .side-en .visa-card { border-right: none; border-left: 5px solid var(--sea-blue); }
+        .visa-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
 
+        .flag-circle { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
+
+        .details h3 { margin: 0; color: var(--sea-blue); font-size: 1.3rem; }
+        .details p { margin: 5px 0 0 0; color: #444; font-size: 0.95rem; line-height: 1.4; }
+
+        /* الطائرة المتحركة */
+        .airplane {
+            position: fixed; top: 20%; left: -100px; font-size: 3rem;
+            z-index: 1000; animation: fly 18s linear infinite; pointer-events: none; opacity: 0.7;
+        }
+        @keyframes fly {
+            from { left: -100px; transform: rotate(10deg); }
+            to { left: 110%; transform: rotate(-10deg); }
+        }
+
+        /* الفوتر (الرقم والواتساب) */
         footer {
-            text-align: center; padding: 50px 20px; background: white;
-            border-top: 3px solid var(--sea-blue); margin-top: 30px;
+            text-align: center; padding: 60px 20px; background: white;
+            border-top: 5px solid var(--sea-blue);
         }
-        .contact-box {
-            display: inline-flex; align-items: center; gap: 15px;
-            background: #f0f9ff; padding: 15px 35px; border-radius: 50px;
-            border: 2px solid var(--whatsapp-green); text-decoration: none;
-            color: #333; font-size: 1.6rem; font-weight: bold; transition: 0.3s;
-        }
-        .contact-box:hover { background: var(--whatsapp-green); color: white; transform: scale(1.05); }
-        .contact-box img { width: 35px; }
 
-        .whatsapp-float {
+        .whatsapp-container {
+            display: inline-flex; align-items: center; gap: 20px;
+            background: #f0fdf4; padding: 20px 40px; border-radius: 50px;
+            border: 3px solid var(--whatsapp-green); text-decoration: none;
+            color: #166534; font-size: 1.8rem; font-weight: bold;
+            transition: 0.4s; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1);
+        }
+        .whatsapp-container:hover { background: var(--whatsapp-green); color: white; transform: scale(1.05); }
+        .whatsapp-container img { width: 45px; }
+
+        /* أيقونة الواتساب العائمة */
+        .float-ws {
             position: fixed; bottom: 30px; left: 30px;
             background: var(--whatsapp-green); width: 65px; height: 65px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s;
         }
+        .float-ws:hover { transform: rotate(360deg) scale(1.1); }
 
         @media (max-width: 800px) {
-            .dual-container { flex-direction: column; }
+            .dual-layout { flex-direction: column; }
             .side { width: 100%; border: none; }
+            .whatsapp-container { font-size: 1.2rem; padding: 15px 25px; }
             header h1 { font-size: 2.5rem; }
-            .contact-box { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
+<div class="airplane">✈️</div>
+
 <header>
     <h1>ElisaGroop</h1>
-    <div class="evisa">Evisa</div>
-    <p style="font-weight: bold; margin-top: 10px;">أسرع خدمات الفيزا الدولية | International Visa Services</p>
+    <span class="evisa-tag">Evisa</span>
+    <p style="font-size: 1.2rem; font-weight: 600;">بوابتك لتأشيرات العالم بأسرع وقت</p>
 </header>
 
-<div class="container">
+<div class="dual-layout">
+    
     <div class="side side-en">
-        <h2>Visa Requirements</h2>
-        <div class="card"><img src="
+        <h2 class="section-title">Visa Requirements</h2>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/tr.png" class="flag-circle">
+            <div class="details"><h3>Turkey</h3><p>Passport copy, Personal photo, Fast E-Visa process.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/fr.png" class="flag-circle">
+            <div class="details"><h3>France</h3><p>Bank statement, Schengen insurance, Employment proof.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/gb.png" class="flag-circle">
+            <div class="details"><h3>United Kingdom</h3><p>Financial proof, Certified translation of documents.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/al.png" class="flag-circle">
+            <div class="details"><h3>Albania</h3><p>Valid passport, Flight and Hotel reservation.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/ge.png" class="flag-circle">
+            <div class="details"><h3>Georgia</h3><p>Valid passport, International travel insurance.</p></div>
+        </div>
+    </div>
+
+    <div class="side side-ar">
+        <h2 class="section-title">متطلبات التأشيرة</h2>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/tr.png" class="flag-circle">
+            <div class="details"><h3>تركيا</h3><p>صورة الجواز، صورة شخصية، استخراج الفيزا الإلكترونية.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/fr.png" class="flag-circle">
+            <div class="details"><h3>فرنسا</h3><p>كشف حساب بنكي، تأمين طبي شنغن، إثبات عمل.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/gb.png" class="flag-circle">
+            <div class="details"><h3>بريطانيا</h3><p>إثبات ملاءة مالية، ترجمة قانونية للمستندات.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/al.png" class="flag-circle">
+            <div class="details"><h3>ألبانيا</h3><p>جواز سفر ساري، حجز طيران مؤكد وحجز فندق.</p></div>
+        </div>
+        <div class="visa-card">
+            <img src="https://flagcdn.com/w160/ge.png" class="flag-circle">
+            <div class="details"><h3>جورجيا</h3><p>جواز سفر ساري المفعول، تأمين سفر دولي.</p></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p style="font-size: 1.3rem; margin-bottom: 25px; font-weight: bold;">للحجز والاستفسار تواصل معنا مباشرة | Contact us</p>
+    <a href="https://wa.me/4917635315100" class="whatsapp-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span>+49 176 35315100</span>
+    </a>
+    <p style="margin-top: 40px; color: #777; font-size: 0.9rem;">© 2026 ElisaGroop - Evisa. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/4917635315100" class="float-ws" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="38" alt="WhatsApp">
+</a>
+
+</body>
+</html>
